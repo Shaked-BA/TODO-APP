@@ -6,6 +6,7 @@ import './styles/listHeader.css';
 import './styles/listItem.css';
 import './styles/auth.css';
 import './styles/modal.css';
+import './styles/progressBar.css';
 
 import App from './App';
 

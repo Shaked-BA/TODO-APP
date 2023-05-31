@@ -1,4 +1,5 @@
 import TickIcon from './TickIcon';
+import ProgressBar from './ProgressBar';
 import { deleteTask } from '../services/todos';
 
 function ListItem({ task, updateTodos, handleClick }) {
@@ -13,6 +14,7 @@ function ListItem({ task, updateTodos, handleClick }) {
       <div className="info-container">
         <TickIcon />
         <p className="task-title">{task.title}</p>
+        <ProgressBar progress={task.progress}/>
       </div>
       <div className='button-container'>
         <button className="edit" onClick={() => handleClick({mode: 'edit', data: task})}>Edit</button>

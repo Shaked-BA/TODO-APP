@@ -1,7 +1,13 @@
-function ProgressBar({progress}) {
+function ProgressBar({ progress }) {
+  const colors = ['rgb(255, 214, 161)', 'rgb(255, 175, 163)', 'rgb(108, 115, 148)', 'rgb(141, 181, 145)'];
+  const currentColor = colors[Math.floor(Math.random() * colors.length)];
+
   return (
-    <div className="progress-bar">
-      {progress}
+    <div className="outer-bar">
+      <div 
+        className="inner-bar"
+        style={{ width: `${progress}`, backgroundColor: currentColor }}
+      ></div>
     </div>
   );
 }

@@ -33,6 +33,7 @@ function App() {
       {!token && <Auth updateCookie={setCookie} />}
       {token && <>
         <ListHeader listName={"My TODOs"} handleClick={setModalProps} removeFromCookie={removeCookie} />
+        <p className="user-email">Welcome back {email}</p>
         {sortedTodosJSX}
         {modalProps.mode !== '' && <Modal modalProps={modalProps} cookieEmail={email} updateTodos={setUsersTodos} handleClick={setModalProps} />}
       </>}
