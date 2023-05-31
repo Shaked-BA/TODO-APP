@@ -1,0 +1,29 @@
+@import 'index.css';
+
+.list-item {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 0 0 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tick {
+    padding: 10px;
+}
+
+.tick path {
+    fill:none;
+    stroke:black;
+    stroke-miterlimit:10;
+    stroke-width:32px;
+}
+
+.tick polyline {
+    fill:none;
+    stroke: black;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:32px;
+}

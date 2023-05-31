@@ -1,11 +1,9 @@
 require('dotenv').config();
-
+const pool = require('./utils/db');
 const { v4:uuidv4 } = require('uuid');
 
 const express = require("express");
 const router = express.Router();
-
-const pool = require('./utils/db');
 
 router.get('/:userEmail', async (req, res) => {
     const { userEmail } = req.params;
@@ -31,7 +29,7 @@ router.post('/create', async (req, res) => {
 router.put('/edit', async (req, res) => {
     const { id, user_email, title, progress, date } = req.body;
     try {
-        const updatedTodo = await pool.query("UPDATE todos SET user_email = $1, title =$2, progress = $3, date = $4 WHERE id = $5;", [user_email, title, progress, date, id]);
+        const updatedTodo = await pool.query("UPDATE todos SET user_email = $1, title = $2, progress = $3, date = $4 WHERE id = $5;", [user_email, title, progress, date, id]);
         res.send(updatedTodo);
     } catch (err) {
         console.error(err);
@@ -39,14 +37,14 @@ router.put('/edit', async (req, res) => {
 });
 
 router.delete('/delete/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
         const deletedTodo = await pool.query("DELETE FROM todos WHERE id = $1", [id]);
         res.send(deletedTodo);
     } catch (err) {
         console.error(err);
     }
-})
+});
 
 
 module.exports = router;

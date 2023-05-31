@@ -1,0 +1,7 @@
+@import 'index.css';
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+}

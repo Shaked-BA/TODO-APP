@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({baseURL: process.env.REACT_APP_SERVERURL});
 
-const userEmail = "shaked@test.com";
-export const getTodosByEmail = async () => {
+export const getTodosByEmail = async (userEmail) => {
   try {
     const response = await api.get(`todos/${userEmail}`);
     return response.data;

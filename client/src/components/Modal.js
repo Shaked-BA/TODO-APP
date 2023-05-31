@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { postTaskData, editTaskData} from '../services/todos';
 
 
-function Modal({ props, userEmail, updateTodos, handleClick}) {
-  const {mode, data} = props;
+function Modal({ modalProps, updateTodos, handleClick, cookieEmail}) {
+  const {mode, data} = modalProps;
 
   const [taskData, setTaskData] = useState({
     id: mode === 'edit' ? data.id : '',
-    user_email: userEmail,
+    user_email: mode === 'edit' ? data.user_email : cookieEmail,
     title: mode === 'edit' ? data.title : 'New Task',
-    progress: mode === 'edit' ? data.progress : '0',
+    progress: mode === 'edit' ? data.progress : 0,
     date: mode === 'edit' ? data.date : new Date()
   });
 
@@ -30,7 +30,7 @@ function Modal({ props, userEmail, updateTodos, handleClick}) {
     <div className="overlay">
       <div className="modal">
         <div className="form-title-container">
-          <h3>Let's {props.mode} your task</h3>
+          <h3>Let's {modalProps.mode} your task</h3>
           <button onClick={exitModal}>X</button>
         </div>
         <form>
@@ -38,7 +38,7 @@ function Modal({ props, userEmail, updateTodos, handleClick}) {
           <br />
           <label htmlFor="range">Drag to select your current progress</label>
           <input required type="range" min="0" max="100" name="progress" value={taskData.progress} onChange={handleChange}/>
-          <input className={props.mode} type="submit" onClick={() => mode === 'edit' ? saveTaskData(editTaskData) : saveTaskData(postTaskData)}/>
+          <input className={modalProps.mode} type="submit" onClick={() => mode === 'edit' ? saveTaskData(editTaskData) : saveTaskData(postTaskData)}/>
         </form>
       </div>
     </div>
